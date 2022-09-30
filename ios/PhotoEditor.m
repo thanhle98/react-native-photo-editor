@@ -6,10 +6,11 @@
                       withResolver : (RCTPromiseResolveBlock)resolve
                       withRejecter : (RCTPromiseRejectBlock)reject)
 
+    // Please add this one
+    + (BOOL)requiresMainQueueSetup
+    {
+        return NO;
+    }
+
 @end
 
-// Please add this one
-+ (BOOL)requiresMainQueueSetup
-{
-    return NO;
-}
