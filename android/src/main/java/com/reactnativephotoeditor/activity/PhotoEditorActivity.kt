@@ -363,6 +363,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         mPhotoEditor!!.setBrushDrawingMode(true)
         mShapeBuilder = ShapeBuilder()
         mPhotoEditor!!.setShape(mShapeBuilder)
+        mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(currentColor))
 //        mTxtCurrentTool!!.setText(R.string.label_shape)
         showBottomSheetDialogFragment(mShapeBSFragment)
       }
