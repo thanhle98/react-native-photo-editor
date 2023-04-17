@@ -72,6 +72,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   private var mRootView: ConstraintLayout? = null
   private val mConstraintSet = ConstraintSet()
   private var mIsFilterVisible = false
+  public var currentColor = Color.RED
 
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -151,7 +152,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       .into(mPhotoEditorView!!.source);
     mPhotoEditor!!.setBrushDrawingMode(true)
     mShapeBuilder = ShapeBuilder()
-    mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(Color.RED))
+    mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(currentColor))
   }
 
   private fun showLoading(message: String) {
@@ -313,6 +314,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
 
   override fun onColorChanged(colorCode: Int) {
     mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(colorCode))
+    currentColor = colorCode;
 //    mTxtCurrentTool!!.setText(R.string.label_brush)
   }
 
@@ -328,6 +330,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
 
   override fun onShapePicked(shapeType: ShapeType) {
     mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeType(shapeType))
+    mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(currentColor))
   }
 
   override fun onStickerClick(bitmap: Bitmap) {
