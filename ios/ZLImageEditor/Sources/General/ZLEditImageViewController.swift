@@ -285,7 +285,7 @@ public class ZLEditImageViewController: UIViewController {
         self.topShadowView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 150)
         
         self.topShadowLayer.frame = self.topShadowView.bounds
-        let iconBackSize = 32.0
+        let iconBackSize: CGFloat = 32.0
         self.cancelBtn.frame = CGRect(x: self.containerView.bounds.width - iconBackSize - 20.0 , y: insets.top + 24, width: iconBackSize, height: iconBackSize)
         
         
@@ -579,6 +579,7 @@ public class ZLEditImageViewController: UIViewController {
                 self.configImageSticker(iv)
             }
         }
+        self.drawBtnClick();
     }
     
     func rotationImageView() {
