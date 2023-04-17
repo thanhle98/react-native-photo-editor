@@ -26,24 +26,6 @@
     app:layout_constraintTop_toTopOf="parent"
     app:photo_src="@drawable/blank_image" />
 
-  <ImageView
-    android:id="@+id/imgUndo"
-    android:layout_width="@dimen/top_tool_icon_width"
-    android:layout_height="@dimen/top_tool_icon_width"
-    android:src="@drawable/ic_undo"
-    app:layout_constraintBottom_toTopOf="@+id/rvConstraintTools"
-    app:layout_constraintEnd_toStartOf="@+id/imgRedo" />
-
-  <ImageView
-    android:id="@+id/imgRedo"
-    android:layout_width="@dimen/top_tool_icon_width"
-    android:layout_height="@dimen/top_tool_icon_width"
-    android:layout_marginEnd="4dp"
-    android:layout_marginRight="4dp"
-    android:src="@drawable/ic_redo"
-    app:layout_constraintBottom_toTopOf="@+id/rvConstraintTools"
-    app:layout_constraintEnd_toEndOf="parent" />
-
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvConstraintTools"
     android:layout_width="0dp"
@@ -57,6 +39,28 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     tools:listitem="@layout/row_editing_tools" />
+
+  <ImageView
+    android:id="@+id/imgUndo"
+    android:layout_width="@dimen/top_tool_icon_width"
+    android:layout_height="@dimen/top_tool_icon_width"
+    android:src="@drawable/ic_undo"
+    android:layout_marginBottom="20dp"
+    app:layout_constraintBottom_toTopOf="@+id/guideline"
+    app:layout_constraintEnd_toStartOf="@+id/imgRedo" />
+
+  <ImageView
+    android:id="@+id/imgRedo"
+    android:layout_width="@dimen/top_tool_icon_width"
+    android:layout_height="@dimen/top_tool_icon_width"
+    android:layout_marginEnd="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="20dp"
+    android:src="@drawable/ic_redo"
+    app:layout_constraintBottom_toTopOf="@+id/guideline"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+
 
   <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvFilterView"

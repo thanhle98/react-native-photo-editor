@@ -149,6 +149,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       })
 //      .placeholder(drawable)
       .into(mPhotoEditorView!!.source);
+    mPhotoEditor!!.setBrushDrawingMode(true)
+    mShapeBuilder = ShapeBuilder()
+    mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(Color.RED))
   }
 
   private fun showLoading(message: String) {
@@ -212,7 +215,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       val styleBuilder = TextStyleBuilder()
       styleBuilder.withTextColor(newColorCode)
       mPhotoEditor!!.editText(rootView, inputText, styleBuilder)
-      mTxtCurrentTool!!.setText(R.string.label_text)
+//      mTxtCurrentTool!!.setText(R.string.label_text)
     }
   }
 
@@ -310,17 +313,17 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
 
   override fun onColorChanged(colorCode: Int) {
     mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeColor(colorCode))
-    mTxtCurrentTool!!.setText(R.string.label_brush)
+//    mTxtCurrentTool!!.setText(R.string.label_brush)
   }
 
   override fun onOpacityChanged(opacity: Int) {
     mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeOpacity(opacity))
-    mTxtCurrentTool!!.setText(R.string.label_brush)
+//    mTxtCurrentTool!!.setText(R.string.label_brush)
   }
 
   override fun onShapeSizeChanged(shapeSize: Int) {
     mPhotoEditor!!.setShape(mShapeBuilder!!.withShapeSize(shapeSize.toFloat()))
-    mTxtCurrentTool!!.setText(R.string.label_brush)
+//    mTxtCurrentTool!!.setText(R.string.label_brush)
   }
 
   override fun onShapePicked(shapeType: ShapeType) {
@@ -329,7 +332,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
 
   override fun onStickerClick(bitmap: Bitmap) {
     mPhotoEditor!!.addImage(bitmap)
-    mTxtCurrentTool!!.setText(R.string.label_sticker)
+//    mTxtCurrentTool!!.setText(R.string.label_sticker)
   }
 
   private fun showSaveDialog() {
@@ -357,27 +360,27 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
         mPhotoEditor!!.setBrushDrawingMode(true)
         mShapeBuilder = ShapeBuilder()
         mPhotoEditor!!.setShape(mShapeBuilder)
-        mTxtCurrentTool!!.setText(R.string.label_shape)
+//        mTxtCurrentTool!!.setText(R.string.label_shape)
         showBottomSheetDialogFragment(mShapeBSFragment)
       }
-      ToolType.TEXT -> {
-        val textEditorDialogFragment = TextEditorDialogFragment.show(this)
-        textEditorDialogFragment.setOnTextEditorListener { inputText: String?, colorCode: Int ->
-          val styleBuilder = TextStyleBuilder()
-          styleBuilder.withTextColor(colorCode)
-          mPhotoEditor!!.addText(inputText, styleBuilder)
-          mTxtCurrentTool!!.setText(R.string.label_text)
-        }
-      }
-      ToolType.ERASER -> {
-        mPhotoEditor!!.brushEraser()
-        mTxtCurrentTool!!.setText(R.string.label_eraser_mode)
-      }
-      ToolType.FILTER -> {
-        mTxtCurrentTool!!.setText(R.string.label_filter)
-        showFilter(true)
-      }
-      ToolType.STICKER -> showBottomSheetDialogFragment(mStickerFragment)
+      // ToolType.TEXT -> {
+      //   val textEditorDialogFragment = TextEditorDialogFragment.show(this)
+      //   textEditorDialogFragment.setOnTextEditorListener { inputText: String?, colorCode: Int ->
+      //     val styleBuilder = TextStyleBuilder()
+      //     styleBuilder.withTextColor(colorCode)
+      //     mPhotoEditor!!.addText(inputText, styleBuilder)
+      //     mTxtCurrentTool!!.setText(R.string.label_text)
+      //   }
+      // }
+      // ToolType.ERASER -> {
+      //   mPhotoEditor!!.brushEraser()
+      //   mTxtCurrentTool!!.setText(R.string.label_eraser_mode)
+      // }
+      // ToolType.FILTER -> {
+      //   mTxtCurrentTool!!.setText(R.string.label_filter)
+      //   showFilter(true)
+      // }
+      // ToolType.STICKER -> showBottomSheetDialogFragment(mStickerFragment)
     }
   }
 
